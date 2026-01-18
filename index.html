@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drive Accessible | Car Rental Management Software</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #D4A017;
+            --primary-dark: #B8860B;
+            --primary-light: #F4C430;
+            --secondary-color: #1A1A1A;
+            --secondary-dark: #000000;
+            --accent-gold: #FFD700;
+            --dark-color: #1A1A1A;
+            --light-bg: #f8f9fa;
+            --text-muted: #6c757d;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 40px rgba(212, 160, 23, 0.08);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar-brand img {
+            max-height: 45px;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color) !important;
+            padding: 0.5rem 1.2rem !important;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(212, 160, 23, 0.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border: none;
+            padding: 0.75rem 1.8rem;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+            transition: var(--transition);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 160, 23, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary-color), #2a2a2a);
+            border: none;
+            padding: 0.75rem 1.8rem;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(26, 26, 26, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(26, 26, 26, 0.4);
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary-color));
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.75rem 1.8rem;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.3);
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2a2a2a 100%);
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        header h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 1rem;
+        }
+
+        header .lead {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        header .h5 {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.3));
+            animation: floatImage 6s ease-in-out infinite;
+            border-radius: 20px;
+        }
+
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 60px 0;
+        }
+
+        .feature-box {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-gold));
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.15);
+        }
+
+        .feature-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-box i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.1), rgba(212, 160, 23, 0.05));
+            border-radius: 16px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .feature-box:hover i {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(212, 160, 23, 0.08));
+        }
+
+        .feature-box h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .feature-box p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-box ul li {
+            padding: 0.6rem 0;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-box ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 24px;
+            height: 24px;
+            background: rgba(212, 160, 23, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .step-card {
+            text-align: left;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-gold));
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.1);
+        }
+
+        .step-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--secondary-color);
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.3);
+        }
+
+        .step-card h4 {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-box {
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .comparison-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .comparison-box:hover::after {
+            opacity: 1;
+        }
+
+        .problems-box {
+            background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+            border: 2px solid #ffb3b3;
+            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.1);
+        }
+
+        .problems-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.15);
+        }
+
+        .solutions-box {
+            background: linear-gradient(135deg, #f0fff4, #e6ffee);
+            border: 2px solid #a3e0b3;
+            box-shadow: 0 10px 40px rgba(81, 207, 102, 0.1);
+        }
+
+        .solutions-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(81, 207, 102, 0.15);
+        }
+
+        .comparison-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .comparison-box ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .comparison-box ul li {
+            padding: 1.2rem 0;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .comparison-box ul li:hover {
+            padding-left: 10px;
+        }
+
+        .problems-box ul li:before {
+            content: "✗ ";
+            color: #dc3545;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .solutions-box ul li:before {
+            content: "✓ ";
+            color: #51cf66;
+            font-weight: bold;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.12);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .avtar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.1), rgba(212, 160, 23, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info h5 {
+            margin: 0 0 0.3rem 0;
+            font-weight: 700;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-card>p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-card>p::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: rgba(212, 160, 23, 0.1);
+            font-family: Georgia, serif;
+        }
+
+        /* Demo Form */
+        .demo-form-section {
+            background: white;
+            padding: 100px 0;
+        }
+
+        .demo-form {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .demo-form input,
+        .demo-form select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .demo-form input:focus,
+        .demo-form select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(212, 160, 23, 0.1);
+        }
+
+        .demo-form button {
+            width: 100%;
+            padding: 1.1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Pricing */
+        .price-card {
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.15);
+        }
+
+        .price-card h2 {
+            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 2rem 0;
+        }
+
+        .price-price sup {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price-price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer h4,
+        .footer h5 {
+            color: white;
+        }
+
+        .footer-link li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-link a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        /* Section Headings */
+        section .h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        section .lead {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            border-radius: 12px !important;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px !important;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.05), rgba(212, 160, 23, 0.02));
+            color: var(--primary-color);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            header h4 {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+
+            section .h1 {
+                font-size: 2rem;
+            }
+
+            .feature-box,
+            .step-card,
+            .comparison-box {
+                padding: 2rem;
+            }
+        }
+
+        /* Utilities */
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+
+        /* Animation Classes */
+        .fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInLeft {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fadeInRight {
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .img-fl {
+            max-width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://driveaccessible.com/storage/upload/logo//logo.png" alt="Drive Accessible Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="#book-demo">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fadeInUp">
+                    <h1>Drive Accessible | Car Rental Management Software</h1>
+                    <h4>All-in-One Car Rental Software Built to Run Your Business Smarter</h4>
+                    <p class="lead mb-4">
+                        Drive Accessible is a powerful, easy-to-use car rental management software designed for daily
+                        rentals, rentals with driver, and multi-company operations. Manage vehicles, customers,
+                        payments, and documents from one centralized platform — without overbooking, confusion, or
+                        manual errors.
+                    </p>
+                    <p class="h5 mb-4">
+                        One platform. Real-time control. Complete rental visibility.
+                    </p>
+                    <div class="my-4">
+                        <a href="#book-demo" class="btn btn-primary btn-lg me-3">Book Demo</a>
+                        <a href="#features" class="btn btn-outline-primary btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 fadeInUp">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Car Fleet" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">Powerful Features for Your Car Rental Business</h2>
+                    <p class="lead text-muted">Everything you need to manage your rental operations efficiently</p>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box fadeInUp">
+                    <i class="bi bi-headset"></i>
+                    <h3>Excellent Customer Support</h3>
+                    <p>We believe great software needs even better support. Our dedicated customer support team is
+                        always ready to assist you with onboarding, training, and daily operations—ensuring you get
+                        maximum value from Drive Accessible.</p>
+                    <ul>
+                        <li>Fast and responsive support</li>
+                        <li>Expert guidance for your rental business</li>
+                        <li>Long-term partnership approach</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box fadeInUp">
+                    <i class="bi bi-receipt"></i>
+                    <h3>Expense Management</h3>
+                    <p>Track and control your operational costs effortlessly. Drive Accessible allows you to record and
+                        monitor all rental-related expenses including maintenance, repairs, fuel, insurance, and
+                        miscellaneous costs—helping you improve profitability and reduce unnecessary spending.</p>
+                    <ul>
+                        <li>Centralized expense tracking</li>
+                        <li>Better cost control & transparency</li>
+                        <li>Accurate profit analysis</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box fadeInUp">
+                    <i class="bi bi-arrow-repeat"></i>
+                    <h3>Renewals Management</h3>
+                    <p>Never miss a renewal again. Automate rental renewals with reminders and notifications to ensure
+                        timely contract extensions, payments, and vehicle returns. Reduce revenue leakage and improve
+                        customer experience with seamless renewal management.</p>
+                    <ul>
+                        <li>Automated renewal reminders</li>
+                        <li>Reduce overdue rentals</li>
+                        <li>Improve customer retention</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box fadeInUp">
+                    <i class="bi bi-building"></i>
+                    <h3>Multiple Companies Management</h3>
+                    <p>Manage multiple car rental companies, branches, or dealerships from a single platform. Drive
+                        Accessible makes it easy to maintain separate data while having complete visibility across all
+                        businesses—perfect for growing rental enterprises.</p>
+                    <ul>
+                        <li>One dashboard for multiple companies</li>
+                        <li>Separate accounts with centralized control</li>
+                        <li>Ideal for rental groups and dealerships</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section" id="onboarding">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">Upgrade Your Car Rental Business Today</h2>
+                    <p class="lead text-muted">With Drive Accessible, you're not just choosing a software—you're
+                        building a stronger, more efficient car rental business. Our secure, customizable, and
+                        cloud-based platform is designed to simplify operations, improve control, and support long-term
+                        growth for rental companies of all sizes.</p>
+                    <p class="text-muted">Getting started is quick and seamless. You can migrate your rental operations
+                        to Drive Accessible in just 4 simple steps.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4 fadeInUp">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>Book a Demo</h4>
+                        <p>Schedule a live demo to see how Drive Accessible fits your rental business needs.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4 fadeInUp">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>Explore Features</h4>
+                        <p>Explore powerful features designed for rentals, renewals, payments, fleet management, and
+                            reporting.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4 fadeInUp">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>Migrate Your Data</h4>
+                        <p>Migrate your existing rental, vehicle, and customer data with guided support.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4 fadeInUp">
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4>Go Live</h4>
+                        <p>Go live and start managing your car rental business smarter and more efficiently.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#book-demo" class="btn btn-primary btn-lg">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">Why Car Rental Businesses Choose Drive Accessible</h2>
+                    <p class="lead text-muted">Drive Accessible replaces manual, time-consuming rental operations with a
+                        fully digital car rental management system—helping businesses save time, reduce errors, and
+                        increase profitability.</p>
+                </div>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-box problems-box fadeInLeft">
+                    <h3>Common Challenges in Car Rental Businesses</h3>
+                    <ul>
+                        <li>Manual rental agreements and paperwork</li>
+                        <li>Delayed or inaccurate invoicing</li>
+                        <li>No real-time view of bookings and fleet availability</li>
+                        <li>Difficulty tracking vehicle renewals and returns</li>
+                        <li>Limited visibility into payments, expenses, and fines</li>
+                        <li>Lack of clear business performance insights</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-box solutions-box fadeInRight">
+                    <h3>How Drive Accessible Solves Them</h3>
+                    <ul>
+                        <li>Digital rental agreements & automated documentation</li>
+                        <li>Instant invoicing with integrated payment tracking</li>
+                        <li>Real-time dashboards for bookings and vehicle status</li>
+                        <li>Live fleet availability and utilization tracking</li>
+                        <li>Automated reminders, email notifications, and renewals</li>
+                        <li>Detailed reports for revenue, expenses, and profitability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <p class="lead">Whether you manage a daily rental business, rentals with driver, multiple companies, or
+                    a dealership, Drive Accessible adapts to your workflow and grows with your business.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-white py-5" id="testimonials">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">What Our Customers Say</h2>
+                    <p class="lead text-muted">Trusted by rental businesses worldwide</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3 fadeInUp">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avtar">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="testimonial-info ms-3">
+                                <h5>Ahmed Al Mansoori</h5>
+                                <p>Operations Manager, Dubai</p>
+                            </div>
+                        </div>
+                        <p>Drive Accessible completely changed how we manage our fleet. Earlier we were juggling
+                            paperwork, renewals, and payments manually. Now everything—from rental agreements to Salik
+                            tracking—is in one place.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fadeInUp">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avtar">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="testimonial-info ms-3">
+                                <h5>Rohit Mehta</h5>
+                                <p>Founder, Mumbai</p>
+                            </div>
+                        </div>
+                        <p>We were looking for a simple but powerful car rental software, and Drive Accessible fits
+                            perfectly. Invoices, renewals, expenses, and reports are all easy to manage now.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fadeInUp">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avtar">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="testimonial-info ms-3">
+                                <h5>Jason Miller</h5>
+                                <p>Director, California, USA</p>
+                            </div>
+                        </div>
+                        <p>What I like most about Drive Accessible is how clean and practical the system is. Fleet
+                            availability, payment tracking, and reporting are very clear.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 fadeInUp">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avtar">
+                                <i class="bi bi-person"></i>
+                            </div>
+                            <div class="testimonial-info ms-3">
+                                <h5>Priya Nair</h5>
+                                <p>Admin Manager, Bengaluru</p>
+                            </div>
+                        </div>
+                        <p>Managing multiple rental companies used to be stressful. With Drive Accessible, we can handle
+                            separate companies while still having a centralized view.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="bg-body py-5" id="pricing">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">Flexible Pricing</h2>
+                    <p class="lead text-muted">Choose the plan that fits your business needs</p>
+                </div>
+            </div>
+            <div class="row text-center justify-content-center g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card price-card">
+                        <div class="card-body">
+                            <h2>Starter</h2>
+                            <div class="price-price">
+                                <sup>$</sup>49<span>/month</span>
+                            </div>
+                            <ul class="list-group list-group-flush product-list">
+                                <li class="list-group-item">User Limit: 5</li>
+                                <li class="list-group-item">Driver Limit: 10</li>
+                                <li class="list-group-item">Enabled Logged History</li>
+                                <li class="list-group-item">Enabled Coupon Applicable</li>
+                            </ul>
+                            <a class="btn btn-outline-primary mt-4" href="#book-demo">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card price-card">
+                        <div class="card-body">
+                            <h2>Professional</h2>
+                            <div class="price-price">
+                                <sup>$</sup>99<span>/month</span>
+                            </div>
+                            <ul class="list-group list-group-flush product-list">
+                                <li class="list-group-item">User Limit: 15</li>
+                                <li class="list-group-item">Driver Limit: 30</li>
+                                <li class="list-group-item">Enabled Logged History</li>
+                                <li class="list-group-item">Enabled Coupon Applicable</li>
+                            </ul>
+                            <a class="btn btn-primary mt-4" href="#book-demo">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card price-card">
+                        <div class="card-body">
+                            <h2>Enterprise</h2>
+                            <div class="price-price">
+                                <sup>$</sup>199<span>/month</span>
+                            </div>
+                            <ul class="list-group list-group-flush product-list">
+                                <li class="list-group-item">Unlimited Users</li>
+                                <li class="list-group-item">Unlimited Drivers</li>
+                                <li class="list-group-item">Enabled Logged History</li>
+                                <li class="list-group-item">Enabled Coupon Applicable</li>
+                            </ul>
+                            <a class="btn btn-outline-primary mt-4" href="#book-demo">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Demo Section -->
+    <section class="demo-form-section" id="book-demo">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-4 mb-lg-0 text-center fadeInLeft">
+                            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&h=400&fit=crop"
+                                alt="Luxury Cars" class="img-fluid" style="max-width: 85%; border-radius: 20px;">
+                        </div>
+                        <div class="col-lg-6 fadeInRight">
+                            <div class="demo-form">
+                                <h2 class="h3 mb-4 text-center">Request Demo</h2>
+                                <form id="demoForm">
+                                    <input type="text" name="fullname" placeholder="Full Name *" required>
+
+                                    <div class="d-flex gap-2 mb-3">
+                                        <select name="country_code" style="width: 120px;">
+                                            <option value="+971">+971</option>
+                                            <option value="+1">+1</option>
+                                            <option value="+44">+44</option>
+                                            <option value="+91">+91</option>
+                                        </select>
+                                        <input type="tel" name="mobile" placeholder="Mobile Number *" required
+                                            style="flex: 1; margin-bottom: 0;">
+                                    </div>
+
+                                    <input type="email" name="email" placeholder="Email *" required>
+
+                                    <p class="text-center text-muted small mb-3">We'll contact you within 24 hours. No
+                                        spam.</p>
+
+                                    <button type="submit" class="btn btn-primary">Get Demo</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-light py-5" id="faqs">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <h2 class="h1 mb-4">Frequently Asked Questions</h2>
+                    <p class="lead text-muted">Find answers to common questions about Drive Accessible</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion accordion-flush" id="accordionFAQ">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    <b>What features does Drive Accessible offer?</b>
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-muted">
+                                    Drive Accessible provides comprehensive features including advanced reporting,
+                                    cloud-based access, mobile applications, expense management, renewal automation, and
+                                    multi-company management—all designed specifically for car rental businesses.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    <b>Is Drive Accessible easy to use?</b>
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-muted">
+                                    Yes! Our platform is designed with simplicity in mind. The intuitive interface
+                                    allows your team to get started quickly without extensive training.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    <b>Can I manage multiple rental companies?</b>
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-muted">
+                                    Absolutely! Drive Accessible allows you to manage multiple car rental companies,
+                                    branches, or dealerships from a single platform with separate data but centralized
+                                    control.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    <b>Is customer support available?</b>
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-muted">
+                                    Yes! We offer dedicated customer support. Our team is ready to assist you with
+                                    onboarding, training, and daily operations to ensure you get maximum value from
+                                    Drive Accessible.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 fadeInUp">
+                    <div class="landing-logo mb-4">
+                        <img src="https://driveaccessible.com/storage/upload/logo/landing_logo.png" alt="Logo"
+                            class="img-fl">
+                    </div>
+                    <h4 class="my-3">About Drive Accessible</h4>
+                    <p class="mb-4" style="color: rgba(255, 255, 255, 0.7);">
+                        Drive Accessible is a powerful car rental management software designed to help businesses
+                        streamline operations, improve efficiency, and grow sustainably.
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <div class="row g-4">
+                        <div class="col-6 col-md-4 fadeInUp">
+                            <h5 class="mb-3">Product</h5>
+                            <ul class="list-unstyled footer-link">
+                                <li><a href="#features">Features</a></li>
+                                <li><a href="#pricing">Pricing</a></li>
+                                <li><a href="#testimonials">Testimonials</a></li>
+                                <li><a href="#faqs">FAQs</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4 fadeInUp">
+                            <h5 class="mb-3">Company</h5>
+                            <ul class="list-unstyled footer-link">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#book-demo">Contact</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-md-4 fadeInUp">
+                            <h5 class="mb-3">Legal</h5>
+                            <ul class="list-unstyled footer-link">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="terms.html">Terms & Conditions</a></li>
+                                <li><a href="#">Refund Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 3rem 0 1.5rem;">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0" style="color: rgba(255, 255, 255, 0.7);">
+                        Copyright © 2026 Drive Accessible. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const navbar = document.querySelector('.navbar');
+
+            if (currentScroll > 100) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Form submission
+        document.getElementById('demoForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your interest! We will contact you within 24 hours.');
+            e.target.reset();
+        });
+    </script>
+</body>
