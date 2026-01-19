@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Privacy Policy | Drive Accessible</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #D4A017;
+            --primary-dark: #B8860B;
+            --primary-light: #F4C430;
+            --secondary-color: #1A1A1A;
+            --secondary-dark: #000000;
+            --accent-gold: #FFD700;
+            --dark-color: #1A1A1A;
+            --light-bg: #f8f9fa;
+            --text-muted: #6c757d;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 40px rgba(212, 160, 23, 0.08);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar-brand img {
+            max-height: 45px;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color) !important;
+            padding: 0.5rem 1.2rem !important;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(212, 160, 23, 0.05);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border: none;
+            padding: 0.75rem 1.8rem;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+            transition: var(--transition);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 160, 23, 0.4);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        }
+
+        /* Hero Section */
+        .terms-hero {
+            background: linear-gradient(135deg, #1A1A1A 0%, #2a2a2a 100%);
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terms-hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(30px, -30px) rotate(120deg);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-to-home:hover {
+            gap: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .terms-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .terms-hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Terms Content */
+        .terms-content {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .terms-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Legal Disclaimer */
+        .terms-highlight {
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.1), rgba(212, 160, 23, 0.05));
+            padding: 2rem;
+            border-left: 4px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            box-shadow: 0 4px 15px rgba(212, 160, 23, 0.1);
+        }
+
+        .terms-highlight strong {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .terms-highlight p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Terms Sections */
+        .terms-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .terms-section h5 {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-top: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .terms-section p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+        }
+
+        .terms-section p a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .terms-section p a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .terms-section ul {
+            margin-left: 0;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            list-style: none;
+        }
+
+        .terms-section ul li {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .terms-section ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            width: 24px;
+            height: 24px;
+            background: rgba(212, 160, 23, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terms-section strong {
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        /* Last Updated */
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .last-updated p {
+            margin-bottom: 0.5rem;
+        }
+
+        .last-updated strong {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer h4,
+        .footer h5 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-link a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-link a:hover {
+            color: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .img-fl {
+            max-width: 40%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terms-hero {
+                padding: 60px 0 40px;
+            }
+
+            .terms-hero h1 {
+                font-size: 2rem;
+            }
+
+            .terms-content {
+                padding: 40px 0;
+            }
+
+            .terms-section h5 {
+                font-size: 1.2rem;
+            }
+
+            .terms-highlight {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://driveaccessible.com/storage/upload/logo//logo.png" alt="Drive Accessible Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#testimonials">Testimonials</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="index.html#book-demo">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="terms-hero">
+        <div class="container">
+            <a href="index.html" class="back-to-home">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+            <h1>Privacy Policy</h1>
+            <p>How we collect, use, and protect your information</p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-wrapper">
+                <!-- Legal Disclaimer -->
+                <div class="terms-highlight">
+                    <strong><i class="bi bi-shield-check"></i> Your Privacy Matters</strong>
+                    <p>This Privacy Policy describes the information we collect from you, what we do with the
+                        information, and our information security practices. If you have any questions about our Privacy
+                        Policy, please contact <a
+                            href="mailto:webmaster@driveaccessible.com">webmaster@driveaccessible.com</a>.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h5>Information</h5>
+                    <p>When you sign up for our service, we will ask you to provide contact information such as your
+                        name, address, mobile numbers, e-mail addresses, and payment information such as credit card
+                        number and expiration date.</p>
+
+                    <p>We may ask you to complete user surveys, and to provide certain demographic information, such as
+                        age, gender, special interests, etc. You do not have to provide this type of information to use
+                        our service if you do not want to.</p>
+
+                    <p>If you contact us for customer support, we may also ask you for information about your operating
+                        system, software and other technical matters.</p>
+
+                    <p>When you visit our Web site we will capture your IP Address, time of and duration of visit, and
+                        time and duration of the pages on our Web site that you view. We may tie this information to the
+                        personally identifiable information we have about you.</p>
+
+                    <p>We will also place a cookie that will identify you to us as a repeat visitor or a customer when
+                        you visit our Web site. See "What is a Cookie" below. We may tie this cookie to the personally
+                        identifiable information we have about you.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h5>Use of Personally Identifiable Information</h5>
+                    <p>We will use your personally identifiable information only as follows:</p>
+                    <ul>
+                        <li>For payment purposes and to provide customer support.</li>
+                        <li>To announce special offers or provide other information from time to time via e-mail. We may
+                            also send e-mail announcing special offers by our third parties, but we will not provide the
+                            third parties with your e-mail address or other personally identifiable information. If you
+                            do not wish to receive these e-mails, you may opt out of future e-mails at any time by
+                            following the instructions included in the e-mail.</li>
+                        <li>To improve our service and the marketing of our service. For example, we may use the
+                            information we gather from user surveys, demographic data, and web site visits to help us
+                            improve or target our Web site and customize your visit.</li>
+                    </ul>
+
+                    <p>We will not provide any personally identifiable information about you to any other person other
+                        than:</p>
+                    <ul>
+                        <li>a law enforcement or regulatory agency at their request;</li>
+                        <li>a person or company who acquires our business;</li>
+                        <li>third parties who perform services on our behalf (such as payment processing), subject to
+                            the third party agreeing with us that it will keep your personally identifiable information
+                            confidential;</li>
+                        <li>as otherwise needed to protect or enforce or rights or the rights of others.</li>
+                        <li>We absolutely do not transfer or sell your information for inclusion on third party e-mail
+                            or other marketing lists.</li>
+                        <li>All credit/debit cards details and personally identifiable information will NOT be stored,
+                            sold, shared, rented or leased to any third parties.</li>
+                        <li>The Website Policies and Terms & Conditions may be changed or updated occasionally to meet
+                            the requirements and standards. Therefore the Customers' are encouraged to frequently visit
+                            these sections in order to be updated about the changes on the website. Modifications will
+                            be effective on the day they are posted.</li>
+                        <li>Some of the advertisements, you see on the Site are selected and delivered by third parties,
+                            such as ad networks, advertising agencies, advertisers, and audience segment providers.
+                            These third parties may collect information about you and your online activities, either on
+                            the Site or on other websites, through cookies, web beacons, and other technologies in an
+                            effort to understand your interests and deliver to you advertisements that are tailored to
+                            your interests. Please remember that we do not have access to, or control over, the
+                            information these third parties may collect. The information practices of these third
+                            parties are not covered by this privacy policy.</li>
+                    </ul>
+                </div>
+
+                <div class="terms-section">
+                    <h5>Use of Non-Personally Identifiable Information</h5>
+                    <p>We may share aggregate statistical data about our customers with third parties, such as
+                        advertisers or suppliers. This aggregate statistical data will not identify you personally.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h5>What is a Cookie</h5>
+                    <p>A "cookie" is an alphanumeric identifier that is unique to your browser. The cookie will identify
+                        your browser to us when you visit our web site so that we may customize your visit.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h5>Security of Your Information</h5>
+                    <p>We store your personally identifiable information and payment information in a secure, encrypted
+                        format that is only accessible to authorized staff members.</p>
+                </div>
+
+                <div class="terms-section">
+                    <h5>Children's Privacy</h5>
+                    <p>Our service is not available to children under the age of 13, and we will not intentionally
+                        maintain information about anyone under the age of 13.</p>
+                </div>
+
+                <div class="last-updated">
+                    <p><strong>Last Updated:</strong> January 19, 2026</p>
+                    <p>This Privacy Policy is effective as of the date listed above and applies to all users of the
+                        Drive Accessible platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 fadeInUp">
+                <div class="landing-logo mb-4">
+                    <img src="https://driveaccessible.com/storage/upload/logo/landing_logo.png" alt="Logo"
+                        class="img-fl">
+                </div>
+                <h4 class="my-3">About Drive Accessible</h4>
+                <p class="mb-4" style="color: rgba(255, 255, 255, 0.7);">
+                    Drive Accessible is a powerful car rental management software designed to help businesses
+                    streamline operations, improve efficiency, and grow sustainably.
+                </p>
+            </div>
+            <div class="col-md-8">
+                <div class="row g-4">
+                    <div class="col-6 col-md-4 fadeInUp">
+                        <h5 class="mb-3">Quick Links</h5>
+                        <ul class="list-unstyled footer-link">
+                            <li><a href="#features">Features</a></li>
+                            <!-- <li><a href="#pricing">Pricing</a></li> -->
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#faqs">FAQs</a></li>
+                            <li><a href="#book-demo">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 fadeInUp">
+                        <h5 class="mb-3">Legal</h5>
+                        <ul class="list-unstyled footer-link">
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                            <li><a href="terms.html">Terms & Conditions</a></li>
+                            <li><a href="refund.html">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="border-color: rgba(255, 255, 255, 0.1); margin: 3rem 0 1.5rem;">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0" style="color: rgba(255, 255, 255, 0.7);">
+                    Copyright © 2026 Drive Accessible. All rights reserved.
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
