@@ -40,7 +40,7 @@
             overflow-x: hidden;
             line-height: 1.7;
         }
-        
+
         /* Navigation */
         .navbar {
             background: rgba(255, 255, 255, 0.98);
@@ -160,12 +160,16 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(0, 0) rotate(0deg);
             }
+
             33% {
                 transform: translate(30px, -30px) rotate(120deg);
             }
+
             66% {
                 transform: translate(-20px, 20px) rotate(240deg);
             }
@@ -211,15 +215,52 @@
         }
 
         @keyframes floatImage {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-20px);
             }
         }
 
         /* Features Grid */
+        .features-slider {
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .slide-track {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 22s linear infinite;
+        }
+
+        .feature-box {
+            min-width: 360px;
+            max-width: 380px;
+            flex-shrink: 0;
+        }
+
+
+        /* Infinite scroll movement */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-100% - 2rem));
+            }
+        }
+
+        /* Pause on hover */
+        .features-slider:hover .slide-track {
+            animation-play-state: paused;
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -228,7 +269,8 @@
         }
 
         .feature-box {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            ;
             padding: 3rem;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
@@ -331,7 +373,8 @@
         .step-card {
             text-align: left;
             padding: 2.5rem;
-            background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);;
+            background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);
+            ;
             border-radius: var(--border-radius);
             margin-bottom: 1.5rem;
             border: 1px solid rgba(0, 0, 0, 0.05);
@@ -632,7 +675,8 @@
 
         .demo-form input,
         .demo-form select {
-            background: #ebe3bb40;;
+            background: #ebe3bb40;
+            ;
             width: 100%;
             padding: 1rem 1.2rem;
             margin-bottom: 1.2rem;
@@ -659,7 +703,8 @@
 
         /* FAQ Section - DARK GRADIENT */
         .faq-section {
-            background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);            padding: 100px 0;
+            background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);
+            padding: 100px 0;
             position: relative;
             overflow: hidden;
         }
@@ -813,6 +858,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -828,6 +874,7 @@
                 opacity: 0;
                 transform: translateX(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -843,6 +890,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -918,57 +966,70 @@
                 </div>
             </div>
 
+
             <div class="features-grid">
-                <div class="feature-box fadeInUp">
-                    <i class="bi bi-headset"></i>
-                    <h3>Excellent Customer Support</h3>
-                    <p>We believe great software needs even better support. Our dedicated customer support team is
-                        always ready to assist you with onboarding, training, and daily operations—ensuring you get
-                        maximum value from Drive Accessible.</p>
-                    <ul>
-                        <li>Fast and responsive support</li>
-                        <li>Expert guidance for your rental business</li>
-                        <li>Long-term partnership approach</li>
-                    </ul>
-                </div>
+                <div class="features-slider">
+                    <div class="slide-track">
+                        <div class="feature-box fadeInUp">
+                            <i class="bi bi-headset"></i>
+                            <h3>Excellent Customer Support</h3>
+                            <p>We believe great software needs even better support. Our dedicated customer support team
+                                is
+                                always ready to assist you with onboarding, training, and daily operations—ensuring you
+                                get
+                                maximum value from Drive Accessible.</p>
+                            <ul>
+                                <li>Fast and responsive support</li>
+                                <li>Expert guidance for your rental business</li>
+                                <li>Long-term partnership approach</li>
+                            </ul>
+                        </div>
 
-                <div class="feature-box fadeInUp">
-                    <i class="bi bi-receipt"></i>
-                    <h3>Expense Management</h3>
-                    <p>Track and control your operational costs effortlessly. Drive Accessible allows you to record and
-                        monitor all rental-related expenses including maintenance, repairs, fuel, insurance, and
-                        miscellaneous costs—helping you improve profitability and reduce unnecessary spending.</p>
-                    <ul>
-                        <li>Centralized expense tracking</li>
-                        <li>Better cost control & transparency</li>
-                        <li>Accurate profit analysis</li>
-                    </ul>
-                </div>
+                        <div class="feature-box fadeInUp">
+                            <i class="bi bi-receipt"></i>
+                            <h3>Expense Management</h3>
+                            <p>Track and control your operational costs effortlessly. Drive Accessible allows you to
+                                record and
+                                monitor all rental-related expenses including maintenance, repairs, fuel, insurance, and
+                                miscellaneous costs—helping you improve profitability and reduce unnecessary spending.
+                            </p>
+                            <ul>
+                                <li>Centralized expense tracking</li>
+                                <li>Better cost control & transparency</li>
+                                <li>Accurate profit analysis</li>
+                            </ul>
+                        </div>
 
-                <div class="feature-box fadeInUp">
-                    <i class="bi bi-arrow-repeat"></i>
-                    <h3>Renewals Management</h3>
-                    <p>Never miss a renewal again. Automate rental renewals with reminders and notifications to ensure
-                        timely contract extensions, payments, and vehicle returns. Reduce revenue leakage and improve
-                        customer experience with seamless renewal management.</p>
-                    <ul>
-                        <li>Automated renewal reminders</li>
-                        <li>Reduce overdue rentals</li>
-                        <li>Improve customer retention</li>
-                    </ul>
-                </div>
+                        <div class="feature-box fadeInUp">
+                            <i class="bi bi-arrow-repeat"></i>
+                            <h3>Renewals Management</h3>
+                            <p>Never miss a renewal again. Automate rental renewals with reminders and notifications to
+                                ensure
+                                timely contract extensions, payments, and vehicle returns. Reduce revenue leakage and
+                                improve
+                                customer experience with seamless renewal management.</p>
+                            <ul>
+                                <li>Automated renewal reminders</li>
+                                <li>Reduce overdue rentals</li>
+                                <li>Improve customer retention</li>
+                            </ul>
+                        </div>
 
-                <div class="feature-box fadeInUp">
-                    <i class="bi bi-building"></i>
-                    <h3>Multiple Companies Management</h3>
-                    <p>Manage multiple car rental companies, branches, or dealerships from a single platform. Drive
-                        Accessible makes it easy to maintain separate data while having complete visibility across all
-                        businesses—perfect for growing rental enterprises.</p>
-                    <ul>
-                        <li>One dashboard for multiple companies</li>
-                        <li>Separate accounts with centralized control</li>
-                        <li>Ideal for rental groups and dealerships</li>
-                    </ul>
+                        <div class="feature-box fadeInUp">
+                            <i class="bi bi-building"></i>
+                            <h3>Multiple Companies Management</h3>
+                            <p>Manage multiple car rental companies, branches, or dealerships from a single platform.
+                                Drive
+                                Accessible makes it easy to maintain separate data while having complete visibility
+                                across all
+                                businesses—perfect for growing rental enterprises.</p>
+                            <ul>
+                                <li>One dashboard for multiple companies</li>
+                                <li>Separate accounts with centralized control</li>
+                                <li>Ideal for rental groups and dealerships</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1036,7 +1097,8 @@
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-8">
                     <h2 class="h1 mb-4" style="color: black;">Why Car Rental Businesses Choose Drive Accessible</h2>
-                    <p class="lead" style="color: black">Drive Accessible replaces manual, time-consuming rental operations with a
+                    <p class="lead" style="color: black">Drive Accessible replaces manual, time-consuming rental
+                        operations with a
                         fully digital car rental management system—helping businesses save time, reduce errors, and
                         increase profitability.</p>
                 </div>
@@ -1069,7 +1131,8 @@
             </div>
 
             <div class="text-center mt-5">
-                <p class="lead" style="color: black;">Whether you manage a daily rental business, rentals with driver, multiple companies, or
+                <p class="lead" style="color: black;">Whether you manage a daily rental business, rentals with driver,
+                    multiple companies, or
                     a dealership, Drive Accessible adapts to your workflow and grows with your business.</p>
             </div>
         </div>
@@ -1161,7 +1224,8 @@
                 <div class="col-lg-10">
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0 text-center fadeInLeft">
-                            <img src="call.png" alt="Luxury Cars" class="img-fluid" style="max-width: 85%; border-radius: 20px;">
+                            <img src="call.png" alt="Luxury Cars" class="img-fluid"
+                                style="max-width: 85%; border-radius: 20px;">
                         </div>
                         <div class="col-lg-6 fadeInRight">
                             <div class="demo-form">
@@ -1201,7 +1265,8 @@
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-8">
                     <h2 class="h1 mb-4" style="color: white;">Frequently Asked Questions</h2>
-                    <p class="lead" style="color: rgba(255, 255, 255, 0.7);">Find answers to common questions about Drive Accessible</p>
+                    <p class="lead" style="color: rgba(255, 255, 255, 0.7);">Find answers to common questions about
+                        Drive Accessible</p>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -1216,9 +1281,11 @@
                             </h2>
                             <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                Drive Accessible is a web-based fleet management software that helps businesses manage their entire vehicle fleet from
-                                one centralized platform. It covers vehicle tracking, driver management, maintenance, bookings, reports, and overall
-                                fleet operations efficiently.
+                                    Drive Accessible is a web-based fleet management software that helps businesses
+                                    manage their entire vehicle fleet from
+                                    one centralized platform. It covers vehicle tracking, driver management,
+                                    maintenance, bookings, reports, and overall
+                                    fleet operations efficiently.
                                 </div>
                             </div>
                         </div>
@@ -1231,7 +1298,8 @@
                             </h2>
                             <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Yes. Drive Accessible is a fully web-based platform, meaning you can access it anytime, anywhere using a browser—no installation required.
+                                    Yes. Drive Accessible is a fully web-based platform, meaning you can access it
+                                    anytime, anywhere using a browser—no installation required.
                                 </div>
                             </div>
                         </div>
@@ -1244,7 +1312,8 @@
                             </h2>
                             <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    It is ideal for car rental companies, corporate fleets, logistics providers, delivery services, and any business
+                                    It is ideal for car rental companies, corporate fleets, logistics providers,
+                                    delivery services, and any business
                                     managing multiple vehicles and drivers.
                                 </div>
                             </div>
@@ -1258,95 +1327,110 @@
                             </h2>
                             <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    You can manage vehicles, drivers, bookings, availability, maintenance schedules, fuel records, documents, reports, and
+                                    You can manage vehicles, drivers, bookings, availability, maintenance schedules,
+                                    fuel records, documents, reports, and
                                     operational performance—all from a single dashboard.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
                                     <b>Can I manage drivers using the platform?</b>
                                 </button>
                             </h2>
                             <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Absolutely. You can add drivers, assign vehicles, track driver activity, manage documents, and monitor performance from the system.
-                                </div>
-                            </div>
-                        </div>  
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
-                                    <b>How does the software help with maintenance management?</b>
-                                </button>
-                            </h2>
-                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                                <div class="accordion-body text-muted">
-                                    The system provides maintenance scheduling, service reminders, and vehicle health tracking to reduce breakdowns and ensure fleet readiness.
+                                    Absolutely. You can add drivers, assign vehicles, track driver activity, manage
+                                    documents, and monitor performance from the system.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    <b>How does the software help with maintenance management?</b>
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body text-muted">
+                                    The system provides maintenance scheduling, service reminders, and vehicle health
+                                    tracking to reduce breakdowns and ensure fleet readiness.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq7">
                                     <b>Can I generate reports and analytics?</b>
                                 </button>
                             </h2>
                             <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Yes. Drive Accessible offers detailed reports on fleet usage, costs, bookings, driver activity, maintenance, and
+                                    Yes. Drive Accessible offers detailed reports on fleet usage, costs, bookings,
+                                    driver activity, maintenance, and
                                     performance to help you make informed decisions.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq8">
                                     <b>Is the software scalable as my fleet grows?</b>
                                 </button>
                             </h2>
                             <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Yes. The platform is designed to scale easily, allowing you to add more vehicles, drivers, and features as your business expands.
+                                    Yes. The platform is designed to scale easily, allowing you to add more vehicles,
+                                    drivers, and features as your business expands.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq9">
                                     <b>Is my data safe on Drive Accessible?</b>
                                 </button>
                             </h2>
                             <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Yes. We use secure servers, role-based access control, and data protection best practices to ensure your fleet and
+                                    Yes. We use secure servers, role-based access control, and data protection best
+                                    practices to ensure your fleet and
                                     business data remain safe and confidential.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq10">
                                     <b>Can Drive Accessible be customized for my business?</b>
                                 </button>
                             </h2>
                             <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                    Yes. The software can be customized based on your operational needs, business size, and workflow requirements.
+                                    Yes. The software can be customized based on your operational needs, business size,
+                                    and workflow requirements.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq11">
                                     <b>Do you provide support and onboarding?</b>
                                 </button>
                             </h2>
                             <div id="faq11" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
                                 <div class="accordion-body text-muted">
-                                Yes. We provide onboarding assistance, training, and ongoing technical support to ensure smooth implementation and
-                                usage.
+                                    Yes. We provide onboarding assistance, training, and ongoing technical support to
+                                    ensure smooth implementation and
+                                    usage.
                                 </div>
                             </div>
                         </div>
@@ -1448,6 +1532,10 @@
             alert('Thank you for your interest! We will contact you within 24 hours.');
             e.target.reset();
         });
+        const t = document.querySelector('.slide-track');
+        t.innerHTML += t.innerHTML;
+
     </script>
 </body>
+
 </html>
