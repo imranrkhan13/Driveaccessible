@@ -226,7 +226,7 @@
             }
         }
 
-        /* Features Grid */
+        /* Features Slider */
         .features-slider {
             overflow: hidden;
             padding: 40px 0;
@@ -235,15 +235,80 @@
         .slide-track {
             display: flex;
             gap: 2rem;
-            animation: scroll 22s linear infinite;
+            animation: scroll 35s linear infinite;
         }
 
         .feature-box {
-            min-width: 360px;
+            min-width: 380px;
             max-width: 380px;
+            flex-shrink: 0;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #FFD700;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.2);
+            border-left-width: 6px;
+        }
+
+        /* Feature Header */
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .feature-header i {
+            font-size: 2.5rem;
+            color: #FFD700;
             flex-shrink: 0;
         }
 
+        .feature-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--dark-color);
+        }
+
+        /* Feature Content */
+        .feature-box p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .feature-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-box ul li {
+            padding: 0.6rem 0;
+            color: var(--text-muted);
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 0.9rem;
+        }
+
+        .feature-box ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1rem;
+        }
 
         /* Infinite scroll movement */
         @keyframes scroll {
@@ -261,107 +326,12 @@
             animation-play-state: paused;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin: 60px 0;
-        }
-
-        .feature-box {
-            background: linear-gradient(135deg, #f8f9fa, #ffffff);
-            ;
-            padding: 3rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            transform: scaleX(0);
-            transition: var(--transition);
-        }
-
-        .feature-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.15);
-        }
-
-        .feature-box:hover::before {
-            transform: scaleX(1);
-        }
-
-        .feature-box i {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-            border-radius: 16px;
-            font-size: 2rem;
-            color: #FFD700;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .feature-box:hover i {
-            transform: scale(1.1) rotate(5deg);
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 215, 0, 0.1));
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .feature-box h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        .feature-box p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-box ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .feature-box ul li {
-            padding: 0.6rem 0;
-            color: var(--text-muted);
-            position: relative;
-            padding-left: 2rem;
-            font-size: 0.95rem;
-        }
-
-        .feature-box ul li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #FFD700;
-            font-weight: bold;
-            font-size: 1.1rem;
-            width: 24px;
-            height: 24px;
-            background: rgba(255, 215, 0, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-box {
+                min-width: 320px;
+                max-width: 320px;
+            }
         }
 
         /* Steps Section */
@@ -966,69 +936,70 @@
                 </div>
             </div>
 
-
-            <div class="features-grid">
-                <div class="features-slider">
-                    <div class="slide-track">
-                        <div class="feature-box fadeInUp">
+            <div class="features-slider">
+                <div class="slide-track">
+                    <div class="feature-box fadeInUp">
+                        <div class="feature-header">
                             <i class="bi bi-headset"></i>
                             <h3>Excellent Customer Support</h3>
-                            <p>We believe great software needs even better support. Our dedicated customer support team
-                                is
-                                always ready to assist you with onboarding, training, and daily operations—ensuring you
-                                get
-                                maximum value from Drive Accessible.</p>
-                            <ul>
-                                <li>Fast and responsive support</li>
-                                <li>Expert guidance for your rental business</li>
-                                <li>Long-term partnership approach</li>
-                            </ul>
                         </div>
+                        <p>We believe great software needs even better support. Our dedicated customer support team is
+                            always ready to assist you with onboarding, training, and daily operations—ensuring you get
+                            maximum value from Drive Accessible.</p>
+                        <ul>
+                            <li>Fast and responsive support</li>
+                            <li>Expert guidance for your rental business</li>
+                            <li>Long-term partnership approach</li>
+                        </ul>
+                    </div>
 
-                        <div class="feature-box fadeInUp">
+                    <div class="feature-box fadeInUp">
+                        <div class="feature-header">
                             <i class="bi bi-receipt"></i>
                             <h3>Expense Management</h3>
-                            <p>Track and control your operational costs effortlessly. Drive Accessible allows you to
-                                record and
-                                monitor all rental-related expenses including maintenance, repairs, fuel, insurance, and
-                                miscellaneous costs—helping you improve profitability and reduce unnecessary spending.
-                            </p>
-                            <ul>
-                                <li>Centralized expense tracking</li>
-                                <li>Better cost control & transparency</li>
-                                <li>Accurate profit analysis</li>
-                            </ul>
                         </div>
+                        <p>Track and control your operational costs effortlessly. Drive Accessible allows you to record
+                            and
+                            monitor all rental-related expenses including maintenance, repairs, fuel, insurance, and
+                            miscellaneous costs—helping you improve profitability and reduce unnecessary spending.</p>
+                        <ul>
+                            <li>Centralized expense tracking</li>
+                            <li>Better cost control & transparency</li>
+                            <li>Accurate profit analysis</li>
+                        </ul>
+                    </div>
 
-                        <div class="feature-box fadeInUp">
+                    <div class="feature-box fadeInUp">
+                        <div class="feature-header">
                             <i class="bi bi-arrow-repeat"></i>
                             <h3>Renewals Management</h3>
-                            <p>Never miss a renewal again. Automate rental renewals with reminders and notifications to
-                                ensure
-                                timely contract extensions, payments, and vehicle returns. Reduce revenue leakage and
-                                improve
-                                customer experience with seamless renewal management.</p>
-                            <ul>
-                                <li>Automated renewal reminders</li>
-                                <li>Reduce overdue rentals</li>
-                                <li>Improve customer retention</li>
-                            </ul>
                         </div>
+                        <p>Never miss a renewal again. Automate rental renewals with reminders and notifications to
+                            ensure
+                            timely contract extensions, payments, and vehicle returns. Reduce revenue leakage and
+                            improve
+                            customer experience with seamless renewal management.</p>
+                        <ul>
+                            <li>Automated renewal reminders</li>
+                            <li>Reduce overdue rentals</li>
+                            <li>Improve customer retention</li>
+                        </ul>
+                    </div>
 
-                        <div class="feature-box fadeInUp">
+                    <div class="feature-box fadeInUp">
+                        <div class="feature-header">
                             <i class="bi bi-building"></i>
                             <h3>Multiple Companies Management</h3>
-                            <p>Manage multiple car rental companies, branches, or dealerships from a single platform.
-                                Drive
-                                Accessible makes it easy to maintain separate data while having complete visibility
-                                across all
-                                businesses—perfect for growing rental enterprises.</p>
-                            <ul>
-                                <li>One dashboard for multiple companies</li>
-                                <li>Separate accounts with centralized control</li>
-                                <li>Ideal for rental groups and dealerships</li>
-                            </ul>
                         </div>
+                        <p>Manage multiple car rental companies, branches, or dealerships from a single platform. Drive
+                            Accessible makes it easy to maintain separate data while having complete visibility across
+                            all
+                            businesses—perfect for growing rental enterprises.</p>
+                        <ul>
+                            <li>One dashboard for multiple companies</li>
+                            <li>Separate accounts with centralized control</li>
+                            <li>Ideal for rental groups and dealerships</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1532,8 +1503,11 @@
             alert('Thank you for your interest! We will contact you within 24 hours.');
             e.target.reset();
         });
-        const t = document.querySelector('.slide-track');
-        t.innerHTML += t.innerHTML;
+        const slideTrack = document.querySelector('.slide-track');
+        if (slideTrack) {
+            const slides = slideTrack.innerHTML;
+            slideTrack.innerHTML = slides + slides;
+        }
 
     </script>
 </body>
