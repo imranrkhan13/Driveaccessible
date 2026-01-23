@@ -46,11 +46,15 @@
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            /* padding: 1rem 0; */
             position: sticky;
             top: 0;
             z-index: 1000;
             transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            padding: 0.3rem 0;
         }
 
         .navbar-brand img {
@@ -61,6 +65,10 @@
             margin-left: -60px;
         }
 
+        .navbar.scrolled .navbar-brand img {
+            max-height: 60px;
+        }
+
         .nav-link {
             font-weight: 500;
             color: var(--dark-color) !important;
@@ -69,12 +77,31 @@
             border-radius: 8px;
             transition: var(--transition);
             position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
         }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--primary-color) !important;
             background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-2px);
         }
 
         .btn-primary {
@@ -86,6 +113,26 @@
             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
             transition: var(--transition);
             color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary:hover {
@@ -121,10 +168,27 @@
             border-radius: 10px;
             transition: var(--transition);
             background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #FFD700;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-outline-primary:hover::before {
+            left: 0;
         }
 
         .btn-outline-primary:hover {
-            background: #FFD700;
             color: #000;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
@@ -138,7 +202,7 @@
             overflow: hidden;
         }
 
-        /* header::before {
+        header::before {
             content: '';
             position: absolute;
             width: 600px;
@@ -160,7 +224,7 @@
             bottom: -100px;
             left: -100px;
             animation: float 15s ease-in-out infinite reverse;
-        } */
+        }
 
         @keyframes float {
 
@@ -215,6 +279,11 @@
             filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.3));
             animation: floatImage 6s ease-in-out infinite;
             border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05) rotate(1deg);
         }
 
         @keyframes floatImage {
@@ -249,17 +318,33 @@
             padding: 2.5rem;
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             border-left: 4px solid #FFD700;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-box::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.1), transparent);
+            transition: top 0.5s ease;
+        }
+
+        .feature-box:hover::before {
+            top: 0;
         }
 
         .feature-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.2);
-            border-left-width: 6px;
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 45px rgba(255, 215, 0, 0.25);
+            border-left-width: 8px;
         }
 
-        /* Feature Header */
         .feature-header {
             display: flex;
             align-items: center;
@@ -273,6 +358,12 @@
             font-size: 2.5rem;
             color: #FFD700;
             flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        .feature-box:hover .feature-header i {
+            transform: rotate(360deg) scale(1.2);
+            color: #FFA500;
         }
 
         .feature-header h3 {
@@ -282,7 +373,6 @@
             color: var(--dark-color);
         }
 
-        /* Feature Content */
         .feature-box p {
             color: var(--text-muted);
             line-height: 1.7;
@@ -302,6 +392,12 @@
             position: relative;
             padding-left: 1.8rem;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box ul li:hover {
+            padding-left: 2.2rem;
+            color: var(--dark-color);
         }
 
         .feature-box ul li:before {
@@ -313,7 +409,6 @@
             font-size: 1rem;
         }
 
-        /* Infinite scroll movement */
         @keyframes scroll {
             0% {
                 transform: translateX(0);
@@ -324,12 +419,10 @@
             }
         }
 
-        /* Pause on hover */
         .features-slider:hover .slide-track {
             animation-play-state: paused;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .feature-box {
                 min-width: 320px;
@@ -347,13 +440,13 @@
             text-align: left;
             padding: 2.5rem;
             background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);
-            ;
             border-radius: var(--border-radius);
             margin-bottom: 1.5rem;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .step-card::before {
@@ -368,9 +461,27 @@
             transition: var(--transition);
         }
 
+        .step-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .step-card:hover::after {
+            width: 500px;
+            height: 500px;
+        }
+
         .step-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 10px 40px rgba(212, 160, 23, 0.1);
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.2);
         }
 
         .step-card:hover::before {
@@ -390,6 +501,12 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .step-card:hover .step-number {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.6);
         }
 
         .step-card h4 {
@@ -397,15 +514,19 @@
             font-size: 1.4rem;
             margin-bottom: 0.8rem;
             color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .step-card p {
             color: white;
             line-height: 1.7;
             margin: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Comparison Section - DARK GRADIENT */
+        /* Comparison Section */
         .comparison-section {
             padding: 100px 0;
             background: #ebe3bb40;
@@ -447,7 +568,7 @@
         .comparison-box {
             padding: 3rem;
             border-radius: var(--border-radius);
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -466,6 +587,17 @@
 
         .comparison-box:hover::after {
             opacity: 1;
+            animation: rotateGlow 3s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .problems-box {
@@ -475,8 +607,8 @@
         }
 
         .problems-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(212, 160, 23, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.2);
         }
 
         .solutions-box {
@@ -486,8 +618,8 @@
         }
 
         .solutions-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(81, 207, 102, 0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(81, 207, 102, 0.2);
         }
 
         .comparison-box h3 {
@@ -510,11 +642,12 @@
             font-size: 1.05rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             font-weight: 500;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
 
         .comparison-box ul li:hover {
-            padding-left: 10px;
+            padding-left: 15px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .problems-box ul li:before {
@@ -533,7 +666,7 @@
             font-size: 1.3rem;
         }
 
-        /* Testimonials - DARK GRADIENT */
+        /* Testimonials */
         .testimonials-section {
             background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);
             padding: 100px 0;
@@ -571,13 +704,30 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             height: 100%;
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .testimonial-card:hover::before {
+            left: 100%;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(212, 160, 23, 0.12);
+            transform: translateY(-12px) rotate(1deg);
+            box-shadow: 0 25px 70px rgba(212, 160, 23, 0.15);
         }
 
         .testimonial-header {
@@ -597,6 +747,12 @@
             font-size: 2rem;
             color: #FFD700;
             flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover .avtar {
+            transform: scale(1.1) rotate(360deg);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 215, 0, 0.2));
         }
 
         .testimonial-info h5 {
@@ -644,19 +800,24 @@
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .demo-form:hover {
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .demo-form input,
         .demo-form select {
             background: #ebe3bb40;
-            ;
             width: 100%;
             padding: 1rem 1.2rem;
             margin-bottom: 1.2rem;
             border: 2px solid #e9ecef;
             border-radius: 10px;
             font-size: 1rem;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             font-family: 'Inter', sans-serif;
         }
 
@@ -665,6 +826,7 @@
             outline: none;
             border-color: #FFD700;
             box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
         }
 
         .demo-form button {
@@ -674,7 +836,7 @@
             font-weight: 600;
         }
 
-        /* FAQ Section - DARK GRADIENT */
+        /* FAQ Section */
         .faq-section {
             background: linear-gradient(135deg, #000000 0%, #6c6115 50%, #2d2d2d 100%);
             padding: 100px 0;
@@ -706,13 +868,18 @@
             animation: float 22s ease-in-out infinite reverse;
         }
 
-        /* Accordion */
         .accordion-item {
             border-radius: 12px !important;
             margin-bottom: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
             background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.1);
         }
 
         .accordion-button {
@@ -721,6 +888,7 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 12px !important;
             color: var(--dark-color);
+            transition: all 0.3s ease;
         }
 
         .accordion-button:not(.collapsed) {
@@ -744,14 +912,14 @@
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
-            color: white;
+            background: #ebe3bb40;
+            color: black;
             padding: 80px 0 30px;
         }
 
         .footer h4,
         .footer h5 {
-            color: white;
+            color: black;
         }
 
         .footer-link li {
@@ -759,7 +927,7 @@
         }
 
         .footer-link a {
-            color: rgba(255, 255, 255, 0.7);
+            color: black;
             text-decoration: none;
             transition: var(--transition);
             display: inline-block;
@@ -772,6 +940,7 @@
 
         /* Section Headings */
         section .h1 {
+            color: black;
             font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 1rem;
@@ -1420,10 +1589,10 @@
             <div class="row">
                 <div class="col-md-4 fadeInUp">
                     <div class="landing-logo mb-4">
-                        <img src="foota.png" alt="Logo" class="img-fl">
+                        <img src="footer.png" alt="Logo" class="img-fl">
                     </div>
                     <h4 class="my-3">About Drive Accessible</h4>
-                    <p class="mb-4" style="color: rgba(255, 255, 255, 0.7);">
+                    <p class="mb-4" style="color: black;">
                         Drive Accessible is a powerful car rental management software designed to help businesses
                         streamline operations, improve efficiency, and grow sustainably.
                     </p>
