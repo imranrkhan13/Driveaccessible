@@ -1966,7 +1966,6 @@
                                 <h2 class="h3 mb-4 text-center">Request Demo</h2>
                                 <form id="demoForm">
                                     <input type="text" name="fullname" placeholder="Full Name *" required>
-
                                     <div class="phone-input-wrapper">
                                         <select name="country_code">
                                             <option value="+971">+971</option>
@@ -1975,15 +1974,15 @@
                                             <option value="+91">+91</option>
                                         </select>
                                         <input type="tel" name="mobile" placeholder="Mobile Number *" required>
+                                        <input type="hidden" name="time" id="timeField">
                                     </div>
 
                                     <input type="email" name="email" placeholder="Email *" required>
+                                    <input type="hidden" name="message" value="New demo request received">
                                     <p class="text-center text-muted small mt-3">
                                         Or contact us directly at
                                         <strong>info@driveaccessible.com</strong>
-                                    </p>
-
-
+                                    </p>    
                                     <p class="text-center text-muted small">We'll contact you within 24 hours.</p>
 
                                     <button type="submit" class="btn btn-primary">Get Demo</button>
@@ -2307,8 +2306,11 @@
         });
 
         // Form submission
-        document.getElementById("demoForm").addEventListener("submit", function (e) {
+       document.getElementById("demoForm").addEventListener("submit", function (e) {
             e.preventDefault();
+
+            document.getElementById("timeField").value =
+                new Date().toLocaleString();
 
             emailjs.sendForm(
                 "service_e2w8qzw",
@@ -2324,7 +2326,6 @@
                 }
             );
         });
-
         const slideTrack = document.querySelector('.slide-track');
         if (slideTrack) {
             const slides = slideTrack.innerHTML;
