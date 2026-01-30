@@ -364,21 +364,16 @@
         }
 
         /* Footer */
-        .footer {
-            background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
-            color: white;
-            padding: 60px 0 30px;
+        /* Footer */
+         .footer {
+            background: #ebe3bb40;
+            color: black;
+            padding: 80px 0 30px;
         }
 
         .footer h4,
         .footer h5 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-link {
-            list-style: none;
-            padding: 0;
+            color: black;
         }
 
         .footer-link li {
@@ -386,10 +381,15 @@
         }
 
         .footer-link a {
-            color: rgba(255, 255, 255, 0.7);
+            color: black;
             text-decoration: none;
             transition: var(--transition);
             display: inline-block;
+        }
+
+        .footer-link a:hover {
+            color: #FFD700;
+            transform: translateX(5px);
         }
 
         .footer-link a:hover {
@@ -400,6 +400,7 @@
         .img-fl {
             max-width: 40%;
         }
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -719,8 +720,7 @@
                     <div class="contact-box">
                         <p style="margin: 0;">
                             <strong>Drive Accessible</strong><br>
-                            Email: legal@driveaccessible.com<br>
-                            Phone: +1 (555) 123-4567<br>
+                            Email: info@driveaccessible.com<br>
                             Address: Available Worldwide
                         </p>
                     </div>
@@ -742,10 +742,10 @@
         <div class="row">
             <div class="col-md-4 fadeInUp">
                 <div class="landing-logo mb-4">
-                    <img src="foota.jpg" alt="Logo" class="img-fl">
+                    <img src="footer.png" alt="Logo" class="img-fl">
                 </div>
                 <h4 class="my-3">About Drive Accessible</h4>
-                <p class="mb-4" style="color: rgba(255, 255, 255, 0.7);">
+                <p class="mb-4" style="color: black;">
                     Drive Accessible is a powerful car rental management software designed to help businesses
                     streamline operations, improve efficiency, and grow sustainably.
                 </p>
@@ -756,7 +756,6 @@
                         <h5 class="mb-3">Quick Links</h5>
                         <ul class="list-unstyled footer-link">
                             <li><a href="#features">Features</a></li>
-                            <!-- <li><a href="#pricing">Pricing</a></li> -->
                             <li><a href="#testimonials">Testimonials</a></li>
                             <li><a href="#faqs">FAQs</a></li>
                             <li><a href="#book-demo">Contact</a></li>
