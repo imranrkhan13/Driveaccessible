@@ -2306,11 +2306,12 @@
         });
 
         // Form submission
-       document.getElementById("demoForm").addEventListener("submit", function (e) {
+      document.getElementById("demoForm").addEventListener("submit", function (e) {
             e.preventDefault();
 
+            // Set time BEFORE sending
             document.getElementById("timeField").value =
-                new Date().toLocaleString();
+                new Date().toLocaleString("en-GB");
 
             emailjs.sendForm(
                 "service_e2w8qzw",
@@ -2319,13 +2320,15 @@
             ).then(
                 () => {
                     showSuccessPopup();
-                    e.target.reset();
+                    this.reset();
                 },
                 () => {
                     showErrorPopup();
                 }
             );
         });
+        console.log(document.getElementById("timeField").value);
+
         const slideTrack = document.querySelector('.slide-track');
         if (slideTrack) {
             const slides = slideTrack.innerHTML;
